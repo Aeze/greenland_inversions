@@ -7,11 +7,13 @@ Dependencies:
 * python-scipy, python-numpy
 * python-gdal
 * python-netCDF4
-* metis
+* parmetis
 * an MPI implementation
 * libscalapack-mpi1, libscalapack-mpi-dev
 * libmumps-4.10.0, libmumps-dev
 * elmer
+
+Additionally, the environment variable `ELMER_DIR` must be set to the directory where Elmer is installed, and all of the Elmer shared libraries must be in your `LD_LIBRARY_PATH`.
 
 To fetch all the various data, run the command
 

@@ -1,5 +1,6 @@
 
-
+import os
+elmer_dir = os.environ["ELMER_DIR"]
 
 def generate_sif_file(glacier_name,
                       file_name = None,
@@ -216,7 +217,7 @@ Solver 3
   Variable = -nooutput "CostV"
   Variable DOFs = 1
 
-  procedure = "../elmerfem/elmerice/ElmerIceSolvers" "CostSolver_Robin"
+  procedure = "{3}/share/elmersolver/lib/ElmerIceSolvers" "CostSolver_Robin"
 
 
   Cost Variable Name = String "CostValue"  ! Name of Cost Variable
@@ -238,7 +239,7 @@ Solver 4
   Variable = -nooutput "DJDB"
   Variable DOFs = 1
 
-  procedure = "../elmerfem/elmerice/ElmerIceSolvers" "DJDBeta_Robin"
+  procedure = "{4}/share/elmersolver/lib/ElmerIceSolvers" "DJDBeta_Robin"
 
   Neumann Solution Name = String "Flow Solution"
   Dirichlet Solution Name = String "VeloD"
@@ -258,7 +259,7 @@ Solver 5
   Variable = -nooutput "UB"
   Variable DOFs = 1
 
-  procedure = "../elmerfem/elmerice/ElmerIceSolvers" "Optimize_m1qn3Parallel"
+  procedure = "{5}/share/elmersolver/lib/ElmerIceSolvers" "Optimize_m1qn3Parallel"
 
   Cost Variable Name = String "CostValue"
   Optimized Variable Name = String "Beta"
@@ -285,7 +286,7 @@ Solver 6
 
   Procedure = File "ResultOutputSolve" "ResultOutputSolver"
 
-  Output File Name  = string "Output_$name""
+  Output File Name  = file "Output_$name""
   Vtu Format = logical true
   Binary Output = True
   Single Precision = True
@@ -378,7 +379,7 @@ Boundary Condition 4
 
 End
 
-    """.format(regularization, glacier_name, max_iterations)
+    """.format(regularization, glacier_name, max_iterations, elmer_dir, elmer_dir, elmer_dir)
 
     output_file = open(file_name, "w")
     output_file.write(text)
