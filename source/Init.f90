@@ -83,6 +83,7 @@
 
                 ! open file
                 call get_environment_variable('glacier', glacier)
+
                 open(10,file='dems/' // trim(glacier) // '/VDEM.xy')
                 Read(10,*) nx
                 Read(10,*) ny
@@ -191,6 +192,7 @@
 
                 ! open file
                 call get_environment_variable('glacier', glacier)
+
                 open(10,file='dems/' // trim(glacier) // '/VBDEM.xy')
                 Read(10,*) nx
                 Read(10,*) ny
@@ -244,6 +246,7 @@
 
                 ! open file
                 call get_environment_variable('glacier',glacier)
+
                 open(10,file='dems/'//trim(glacier)//'/zsDEM.xy')
                 Read(10,*) nx
                 Read(10,*) ny
@@ -295,8 +298,12 @@
         if (Firsttime) then
                 Firsttime=.False.
 
+                call get_environment_variable('glacier',glacier)
+
         ! open file
                 open(10,file='dems/'//trim(glacier)//'/zbDEM.xy')
+
+
                 Read(10,*) nx
                 Read(10,*) ny
                 allocate(xx(nx),yy(ny))
