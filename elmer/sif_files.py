@@ -1,6 +1,6 @@
 
 import os
-elmer_dir = os.environ["ELMER_DIR"]
+elmer_dir = os.environ["ELMER_HOME"]
 
 def generate_sif_file(glacier_name,
                       file_name = None,
